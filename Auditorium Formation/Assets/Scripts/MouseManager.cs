@@ -21,11 +21,17 @@ public class MouseManager : MonoBehaviour
 
     private GameObject _objectToMove = null;
     private CircleShape _objectToResize = null;
+    private AreaEffector2D _objectToEffector = null;
+
     public Vector3 _worldPosition;
 
     // pour le radius du cercle
     public float _minRadius = 1f;
     public float _maxRadius = 10f;
+    public float radiusRatio = 4f;
+    public float magnitudeMinimum = 4f;
+
+    private bool _isInterracting = false;
     void Start()
     {
         
@@ -39,16 +45,20 @@ public class MouseManager : MonoBehaviour
         if (_isClicked && _objectToMove != null)
         {
             _objectToMove.transform.position = _worldPosition;
+            _isInterracting = true;
         }
         if (_isClicked && _objectToResize != null)
         {
             float radius = Vector2.Distance(_worldPosition, _objectToResize.transform.position);
             _objectToResize.Radius = Mathf.Clamp(radius, _minRadius, _maxRadius );
+            _objectToEffector.forceMagnitude = magnitudeMinimum - (radiusRatio) + radiusRatio * _objectToResize.Radius;
+            _isInterracting = true;
         }
         if (!_isClicked)
         {
             _objectToMove = null;
             _objectToResize = null;
+            _isInterracting = false;
         }
     }
     // pour dectecter les movement de la souris 
@@ -69,6 +79,10 @@ public class MouseManager : MonoBehaviour
 
         if ( hit.collider != null)
         {
+            if (_isInterracting)
+            {
+                return;
+            }
             // pour l'indiquer s'il est sur la flèches 
 
             if (hit.collider.CompareTag("Fleche"))
@@ -82,6 +96,7 @@ public class MouseManager : MonoBehaviour
             {
                 Cursor.SetCursor(outterIcon, new Vector2(256, 256), CursorMode.Auto);
                 _objectToResize = hit.collider.GetComponent<CircleShape>();
+                _objectToEffector = hit.collider.GetComponent<AreaEffector2D>();
             }
         }
         // pour l'indiquer s'il est sur du vide
