@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class MusicBox : MonoBehaviour
 {
+    //
     public AudioSource _audioSoucre;
     public Color _onColor;
     public Color _offColor;
     public SpriteRenderer[] _bars;
+
     public float volumeDecay = 0.02f;
     public float volumeIncrement = 0.1f;
     
@@ -21,6 +23,7 @@ public class MusicBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // on utilise une boucle pour modifier le volume avec un visuel 
         for (int i = 0; i < _bars.Length; i++)
         {
             float seuil = (float)i / _bars.Length;
@@ -34,10 +37,8 @@ public class MusicBox : MonoBehaviour
             }
 
         }
-        
-        _audioSoucre.volume -= volumeDecay * Time.deltaTime;
-
-        
+        // oublie de pas de mettre les op -= ou += pour modifier des valeurs plus de 1
+        _audioSoucre.volume -= volumeDecay * Time.deltaTime;   
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
