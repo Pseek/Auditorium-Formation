@@ -65,8 +65,14 @@ public class MouseManager : MonoBehaviour
     public void PointerMove(InputAction.CallbackContext context)
     {
         //pour indiquer la position du pointer
+        
 
         Vector2 pointerPosition = context.ReadValue<Vector2>();
+        if (pointerPosition == null || Camera.main == null)
+        {
+            return;
+        }
+        
         _ray = Camera.main.ScreenPointToRay(pointerPosition);
         RaycastHit2D hit = Physics2D.GetRayIntersection(_ray);
 
