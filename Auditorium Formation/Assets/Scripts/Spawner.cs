@@ -23,8 +23,11 @@ public class Spawner : MonoBehaviour
         if (chrono >= fireIntervale)
         {
             Vector2 spawnPostion = (Vector2) transform.position + Random.insideUnitCircle * spawnRadius;
-            GameObject particles = Instantiate(_particlesPreFabs, spawnPostion, Quaternion.identity);
-            particles.GetComponent<Rigidbody2D>().velocity = transform.right * 10f;
+            GameObject particle = ObjectPool.Get();
+            /*GameObject particles = Instantiate(_particlesPreFabs, spawnPostion, Quaternion.identity);*/
+            particle.SetActive(true);
+            particle.transform.position = spawnPostion; 
+            particle.GetComponent<Rigidbody2D>().velocity = transform.right * 10f;
             chrono = 0f;
         }          
     }              

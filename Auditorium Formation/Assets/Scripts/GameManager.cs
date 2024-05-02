@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 public class GameManager : MonoBehaviour
 {
-    public UnityEvent EndPanel = new UnityEvent();
+    public UnityEvent NextLevelPanel = new UnityEvent();
     public GameObject[] boxMusic;
     public float _timer = 0f;
     private bool _isMusicMax = false;
@@ -27,9 +28,8 @@ public class GameManager : MonoBehaviour
             _timer += Time.deltaTime;
             if(_timer >= 2f)
             {
-                EndPanel.Invoke();
+               NextLevelPanel.Invoke();
             }
-
         }
         else
         {
@@ -59,7 +59,17 @@ public class GameManager : MonoBehaviour
         }
 
     }
-       
+    public void ChangeScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+
+
 }            
             
         

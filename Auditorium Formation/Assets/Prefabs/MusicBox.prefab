@@ -467,6 +467,7 @@ GameObject:
   - component: {fileID: 3391708571413089641}
   - component: {fileID: 947375074142496603}
   - component: {fileID: -8146157552609871824}
+  - component: {fileID: 3198176927330375308}
   m_Layer: 0
   m_Name: MusicBox
   m_TagString: BoxMusic
@@ -500,11 +501,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 82e81355f041371439d39d8ef750de94, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -615,7 +616,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0037554502, y: -0.00375548}
@@ -631,3 +632,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7972052, y: 0.722096}
   m_EdgeRadius: 0
+--- !u!114 &3198176927330375308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779222536723953460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1be83243f1e8d32419d437459e55c309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSoucre: {fileID: 947375074142496603}
+  _onColor: {r: 1, g: 0.4874805, b: 0, a: 1}
+  _offColor: {r: 1, g: 0.8, b: 0, a: 1}
+  _bars:
+  - {fileID: 4062908284439488040}
+  - {fileID: 269374077045299457}
+  - {fileID: 6362232398912977921}
+  - {fileID: 8698386242669995156}
+  - {fileID: 542707765812959588}
+  volumeDecay: 0.02
+  volumeIncrement: 0.1

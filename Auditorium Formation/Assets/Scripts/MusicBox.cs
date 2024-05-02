@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class MusicBox : MonoBehaviour
@@ -24,9 +22,9 @@ public class MusicBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _chrono = Time.deltaTime;
+        _chrono += Time.deltaTime;
         _chrono = Mathf.Clamp(_chrono, 0f, 2f);
-
+       
         // on utilise une boucle pour modifier le volume avec un visuel 
         for (int i = 0; i < _bars.Length; i++)
         {

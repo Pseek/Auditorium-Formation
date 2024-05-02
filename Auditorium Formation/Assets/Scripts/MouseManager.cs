@@ -12,7 +12,7 @@ public class MouseManager : MonoBehaviour
 
     public Texture2D centerIcon;
     public Texture2D outterIcon;
-
+    
     // variables pour les buttons de la souris
 
     public bool _isClicked;
