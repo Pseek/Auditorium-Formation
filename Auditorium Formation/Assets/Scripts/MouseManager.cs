@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 public class MouseManager : MonoBehaviour
 {
     //variable pour le raycast
@@ -65,7 +66,7 @@ public class MouseManager : MonoBehaviour
     public void PointerMove(InputAction.CallbackContext context)
     {
         //pour indiquer la position du pointer
-        
+        if (EventSystem.current.IsPointerOverGameObject()) return;
 
         Vector2 pointerPosition = context.ReadValue<Vector2>();
         if (pointerPosition == null || Camera.main == null)
