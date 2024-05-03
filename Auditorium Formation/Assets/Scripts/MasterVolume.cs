@@ -11,6 +11,7 @@ public class MasterVolume : MonoBehaviour
         if (PlayerPrefs.HasKey("Volume"))
         {
             mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("Volume"));
+
         }
 
         PlayerPrefs.SetFloat("Volume", 1f);

@@ -65,11 +65,12 @@ public class MouseManager : MonoBehaviour
     // pour dectecter les movement de la souris 
     public void PointerMove(InputAction.CallbackContext context)
     {
+       
         //pour indiquer la position du pointer
         if (EventSystem.current.IsPointerOverGameObject()) return;
 
         Vector2 pointerPosition = context.ReadValue<Vector2>();
-        if (pointerPosition == null || Camera.main == null)
+         if (pointerPosition == null || Camera.main == null)
         {
             return;
         }
