@@ -95,14 +95,14 @@ public class MouseManager : MonoBehaviour
 
             if (hit.collider.CompareTag("Fleche"))
             {
-                Cursor.SetCursor(centerIcon,new Vector2 (256,256),CursorMode.Auto);
+                Cursor.SetCursor(centerIcon,new Vector2 (centerIcon.width/2,centerIcon.height/2),CursorMode.Auto);
                 _objectToMove =  hit.collider.transform.parent.gameObject;
             }
             // pour l'indiquer s'il est sur le cercle
 
             else if( hit.collider.CompareTag("Cercle"))
             {
-                Cursor.SetCursor(outterIcon, new Vector2(256, 256), CursorMode.Auto);
+                Cursor.SetCursor(outterIcon, new Vector2(outterIcon.width / 2, outterIcon.height / 2), CursorMode.Auto);
                 _objectToResize = hit.collider.GetComponent<CircleShape>();
                 _objectToEffector = hit.collider.GetComponent<AreaEffector2D>();
             }
